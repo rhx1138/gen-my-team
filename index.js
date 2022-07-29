@@ -65,4 +65,3 @@ const generatePage = require('./utils/generatePage.js');
 
 
 
-console.log("connected to index.js");

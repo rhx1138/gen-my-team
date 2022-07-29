@@ -1,4 +1,19 @@
-// function that generates markdown for index.html file 
+// function that generates new badges for index.html file
+function generateBadges(data) {
+    return `<div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">${data.name}</h5>
+                <p class="card-text">${data.title}</p>
+                <p class="card-text">${data.id}</p>
+                <p class="card-text">${data.email}</p>
+                <p class="card-text">${data.github}</p>
+                        
+            </div>
+        </div>
+    </div>`;
+}
+
 function generatePage(data) {
     return `
     <!DOCTYPE html>
