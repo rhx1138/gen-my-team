@@ -28,7 +28,7 @@ const generatePage = require('./utils/generatePage.js');
             {
                 type: "input",
                 name: "id",
-                message: "What is your GitHub username?"
+                message: "What is your ID number?"
             },
             {
                 type: "input",
@@ -61,7 +61,7 @@ const generatePage = require('./utils/generatePage.js');
         });
     }
     init();
-    
+
 
 
 
