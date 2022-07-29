@@ -4,17 +4,10 @@ function generatePage(data) {
     return `
     # ${data.title}
     ![alt text](${data.image})
-    ${data.description}
-    ${data.installation}
-    ${data.usage}
-    ${data.license}
-    ${data.contributing}
-    ${data.tests}
+    ${data.name}
+    ${data.id}
     ${data.email}
     ${data.github}
-    ${data.username}
-    ${data.name}
-    ${data.date}
     `;
 }
 

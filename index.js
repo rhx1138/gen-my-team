@@ -22,48 +22,13 @@ const generatePage = require('./utils/generatePage.js');
             },
             {
                 type: "input",
-                name: "username",
-                message: "What is your GitHub username?"
-            },
-            {
-                type: "input",
-                name: "email",
-                message: "What is your email?"
-            },
-            {
-                type: "input",
                 name: "title",
                 message: "What is your title?"
             },
             {
                 type: "input",
-                name: "description",
-                message: "What is your description?"
-            },
-            {
-                type: "input",
-                name: "installation",
-                message: "What is your installation?"
-            },
-            {
-                type: "input",
-                name: "usage",
-                message: "What is your usage?"
-            },
-            {
-                type: "input",
-                name: "license",
-                message: "What is your license?"
-            },
-            {
-                type: "input",
-                name: "contributing",
-                message: "What is your contributing?"
-            },
-            {
-                type: "input",
-                name: "tests",
-                message: "What is your tests?"
+                name: "id",
+                message: "What is your GitHub username?"
             },
             {
                 type: "input",
@@ -74,25 +39,10 @@ const generatePage = require('./utils/generatePage.js');
                 type: "input",
                 name: "github",
                 message: "What is your GitHub username?"
-            },
-            {
-                type: "input",
-                name: "username",
-                message: "What is your GitHub username?"
-            },
-            {
-                type: "input",
-                name: "name",
-                message: "What is your name?"
-            },
-            {
-                type: "input",
-                name: "date",
-                message: "What is your date?"
             }
         ]);
     }
 
-    
+
 
 console.log("connected to index.js");
