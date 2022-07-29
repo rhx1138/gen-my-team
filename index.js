@@ -42,6 +42,26 @@ const generatePage = require('./utils/generatePage.js');
             }
         ]);
     }
+// function to write index.html file
+    function writeToFile(fileName, data) {
+        fs.writeFile(fileName, data, function (err) {
+            if (err) {
+                return console.log(err);
+            }
+            console.log("Success!");
+        });
+    }
+
+    // function to initialize program
+    function init() {
+        promptUser().then(function (data) {
+            // console.log(data);
+            const html = generatePage(data);
+            writeToFile("index.html", html);
+        });
+    }
+    init();
+    
 
 
 
