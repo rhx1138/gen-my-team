@@ -14,6 +14,9 @@ function generateBadges(data) {
     </div>`;
 }
 
+
+
+
 function generatePage(data) {
     return `
     <!DOCTYPE html>
@@ -68,8 +71,11 @@ function generatePage(data) {
 
     </body>
     </html>
-    ![alt text](${data.image})
     `;
 }
+
+// need a function to generate new cards for adding new team members to new cards
+
+
 
 module.exports = generatePage;

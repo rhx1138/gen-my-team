@@ -1,5 +1,9 @@
 // packages needed for this application
-const inquirer = require("inquirer"); 
+const inquirer = require("inquirer");
+const Manager = require("./lib/manager.js");
+const Engineer = require("./lib/engineer.js");
+const Intern = require("./lib/intern.js");
+const htmlSections = require("./htmlSections.js");
 const fs = require("fs");
 const generatePage = require('./utils/generatePage.js');
 
@@ -13,32 +17,38 @@ const generatePage = require('./utils/generatePage.js');
 
     // WHEN I answer each prompt, the information should be saved to a file that contains the following information:
     // name, role, email, and GitHub username (if applicable) for each team member.
+
+    // Prompt, do you want to add more team members 
+    // bass class is employee class = engineer, manager, intern, dropdown selection class
+    // last prompt would you like to add a new team member
+    // need testing for jest 
+
     function promptUser() {
         return inquirer.prompt([
             {
                 type: "input",
                 name: "name",
-                message: "What is your name?"
+                message: "What is your manager's name?"
             },
             {
                 type: "input",
                 name: "title",
-                message: "What is your title?"
+                message: "What is your managers title?"
             },
             {
                 type: "input",
                 name: "id",
-                message: "What is your ID number?"
+                message: "What is your manager's ID number?"
             },
             {
                 type: "input",
                 name: "email",
-                message: "What is your email?"
+                message: "What is your manager's email?"
             },
             {
                 type: "input",
-                name: "github",
-                message: "What is your GitHub username?"
+                name: "officeNumber",
+                message: "What is your manager's office number?"
             }
         ]);
     }
