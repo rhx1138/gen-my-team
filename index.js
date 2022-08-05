@@ -48,22 +48,93 @@ const fs = require("fs");
         ]);
     }
 // function to build team members and their information 
-function buildTeam (data) {
-    const team = [];
-    for (let i = 0; i < data.length; i++) {
-        const employee = data[i];
-        const role = employee.role;
-        if (role === "Manager") {
-            team.push(new Manager(employee.name, employee.id, employee.email, employee.officeNumber));
-        } else if (role === "Engineer") {
-            team.push(new Engineer(employee.name, employee.id, employee.email, employee.github));
-        } else if (role === "Intern") {
-            team.push(new Intern(employee.name, employee.id, employee.email, employee.school));
+function buildTeam() {
+    inquirer.prompt([
+        {
+            type: "list",
+            name: "role",
+            message: "What is your team member's role?",
+            choices: ["Engineer", "Intern", "I don't want to add any more team members"]
+
+}
+    ]).then((answer) => {
+        if (answer.role === "Engineer") {
+            return inquirer.prompt ([
+                {
+                    type: "input",
+                    name: "name",
+                    message: "What is your engineer's name?"
+                },
+                {
+                    type: "input",
+                    name: "id",
+                    message: "What is your engineer's ID number?"
+                },
+                {
+                    type: "input",
+                    name: "email",
+                    message: "What is your engineer's email?"
+                },
+                {
+                    type: "input",
+                    name: "github",
+                    message: "What is your engineer's GitHub username?"
+                }
+            ]);
+        } else if (answer.role === "Intern") {
+            return inquirer.prompt ([
+                {
+                    type: "input",
+                    name: "name",
+                    message: "What is your intern's name?"
+                },
+                {
+                    type: "input",
+                    name: "id",
+                    message: "What is your intern's ID number?"
+                },
+                {
+                    type: "input",
+                    name: "email",
+                    message: "What is your intern's email?"
+                },
+                {
+                    type: "input",
+                    name: "school",
+                    message: "What is your intern's school?"
+                }
+            ]);
+        } else {
+            return;
+        }
+    }).then((answer) => {
+        if (answer.role === "Engineer") {
+            const engineer = new Engineer(answer.name, answer.id, answer.email, answer.github);
+            return engineer;
+        } else if (answer.role === "Intern") {
+            const intern = new Intern(answer.name, answer.id, answer.email, answer.school);
+            return intern;
+        } else {
+            return;
+        }
+    }).then((employee) => {
+        if (employee) {
+            team.push(employee);
+        } else {
+            return;
         }
     }
-    return team;
+    ).then(() => { 
+        promptUser();
+    }
+    ).catch((err) => {
+        console.log(err);
+    }
+    );
 }
 
+
+    
 
 
 
