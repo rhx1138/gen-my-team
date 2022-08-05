@@ -3,9 +3,9 @@ const inquirer = require("inquirer");
 const Manager = require("./lib/manager.js");
 const Engineer = require("./lib/engineer.js");
 const Intern = require("./lib/intern.js");
-const htmlSections = require("./htmlSections.js");
+const htmlSections = require("./lib/htmlSection.js");
 const fs = require("fs");
-const generatePage = require('./utils/generatePage.js');
+// const generatePage = require('./utils/generatePage.js');
 
 // WHEN I am prompted for my team members and their information
 
@@ -32,11 +32,6 @@ const generatePage = require('./utils/generatePage.js');
             },
             {
                 type: "input",
-                name: "title",
-                message: "What is your managers title?"
-            },
-            {
-                type: "input",
                 name: "id",
                 message: "What is your manager's ID number?"
             },
@@ -52,25 +47,78 @@ const generatePage = require('./utils/generatePage.js');
             }
         ]);
     }
-// function to write index.html file
-    function writeToFile(fileName, data) {
-        fs.writeFile(fileName, data, function (err) {
-            if (err) {
-                return console.log(err);
-            }
-            console.log("Success!");
-        });
+// function to build team members and their information 
+function buildTeam (data) {
+    const team = [];
+    for (let i = 0; i < data.length; i++) {
+        const employee = data[i];
+        const role = employee.role;
+        if (role === "Manager") {
+            team.push(new Manager(employee.name, employee.id, employee.email, employee.officeNumber));
+        } else if (role === "Engineer") {
+            team.push(new Engineer(employee.name, employee.id, employee.email, employee.github));
+        } else if (role === "Intern") {
+            team.push(new Intern(employee.name, employee.id, employee.email, employee.school));
+        }
     }
+    return team;
+}
+
+
+
+
+// function to write index.html file
+ function writeToFile (data) {
+    fs.writeFile("index.html", data, function (err) {
+        if (err) {
+            return console.log(err);
+
+} else {
+    console.log("Success!");
+}
+    });
+}
+// function to build html page
+function buildPage (data) {
+    let html = "";
+    for (let i = 0; i < data.length; i++) {
+        const employee = data[i];
+        const role = employee.role;
+        if (role === "Manager") {
+            html += htmlSections.managerSection(employee);
+        } else if (role === "Engineer") {
+            html += htmlSections.engineerSection(employee);
+        } else if (role === "Intern") {
+            html += htmlSections.internSection(employee);
+        }
+    }
+    return html;
+}
+
+
+
+    // function to initialize program
+    // function init() {
+    //     promptUser().then(function (data) {
+    //         // console.log(data);
+    //         const html = generatePage(data);
+    //         writeToFile("index.html", html);
+    //     });
+    // }
+    // init();
 
     // function to initialize program
     function init() {
         promptUser().then(function (data) {
             // console.log(data);
-            const html = generatePage(data);
-            writeToFile("index.html", html);
+            const team = buildTeam(data);
+            const html = buildPage(team);
+            writeToFile(html);
         });
     }
     init();
+
+
 
 
 
