@@ -2,9 +2,9 @@
 const generatePage = require('./utils/generatePage.js');
 
 // generate card for each team member
-const manager = require('./lib/manager.js');
-const engineer = require('./lib/engineer.js');
-const intern = require('./lib/intern.js');
+const Manager = require('./lib/Manager.js');
+const engineer = require('./lib/Engineer.js');
+const intern = require('./lib/Intern.js');
 
 // fs and inquirer are required to run this program
 const inquirer = require("inquirer"); 
@@ -45,7 +45,8 @@ const teamArray = [];
             const  { name, id, email, officeNumber } = managerInput; 
             const manager = new Manager (name, id, email, officeNumber);
     
-            teamArray.push(manager); 
+            teamArray.push(manager);
+            // return managerInput(teamArray); 
             console.log(manager); 
         })
         
@@ -64,29 +65,33 @@ const teamArray = [];
             {
                 type: "input",
                 name: "name",
-                message: "What is your name?"
+                message: "What is their name?"
             },
             {
                 type: "input",
                 name: "id",
-                message: "What is your ID number?"
+                message: "What is their ID number?"
             },
             {
                 type: "input",
                 name: "email",
-                message: "What is your email?"
+                message: "What is their email?"
             },
             {
                 type: "input",
                 name: "github",
-                message: "What is your GitHub username?",
-                when: (input) => input.role === "Engineer"
+                message: "What is their GitHub username?",
+                when: (input) => {
+                    return input.role === "Engineer";
+                }
             },
             {
                 type: "input",
                 name: "school",
-                message: "What is your school name?",
-                when: (input) => input.role === "Intern"
+                message: "What is their school name?",
+                when: (input) => {
+                    return input.role === "Intern";
+                }   
             },
             {
                 type: "confirm",
