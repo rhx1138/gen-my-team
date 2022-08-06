@@ -10,28 +10,15 @@ const intern = require('./lib/intern.js');
 const inquirer = require("inquirer"); 
 const fs = require("fs");
 
+const teamArray = [];
 
-// WHEN I am prompted for my team members and their information
 
-    // THEN I should be able to enter the following information:
-    // name, role, email, and GitHub username (if applicable) for each team member.
-    // I should be able to enter a project name and description for each project.
-    // I should be able to enter a name and description for each badge.
-    // I should be able to enter a name and description for each API.
-
-    // WHEN I answer each prompt, the information should be saved to a file that contains the following information:
-    // name, role, email, and GitHub username (if applicable) for each team member.
-    function promptUser() {
+    function promptManager() {
         return inquirer.prompt([
             {
                 type: "input",
                 name: "name",
-                message: "What is your name?"
-            },
-            {
-                type: "input",
-                name: "title",
-                message: "What is your title?"
+                message: "What is your name or your manager's name?"
             },
             {
                 type: "input",
@@ -45,11 +32,60 @@ const fs = require("fs");
             },
             {
                 type: "input",
-                name: "github",
-                message: "What is your GitHub username?"
+                name: "officeNumber",
+                message: "What is your office number?"
+            },
+            {
+                type: "confirm",
+                name: "confirmAddEmployee",
+                message: "Would you like to add another employee?"
             }
-        ]);
-    }
+        ])
+        .then(managerInput => {
+            const  { name, id, email, officeNumber } = managerInput; 
+            const manager = new Manager (name, id, email, officeNumber);
+    
+            teamArray.push(manager); 
+            console.log(manager); 
+        })
+        
+    };
+
+// inquirer to prompt user for team member type
+    const addTeamMember = () => {
+        console.log("Please select the type of team member you would like to add:")
+        return inquirer.prompt([
+            {
+                type: "list",
+                name: "role",
+                message: "What is the type of team member you would like to add?",
+                choices: ["Engineer", "Intern"]
+            } 
+
+        ])
+      
+        .then(employeeData => {
+            let {name, id, email, officeNumber} = employeeData;
+            let employee;
+
+            if (role === "Engineer") {
+                employee = new engineer(name, id, email, github);
+                console.log(employee);
+            } else if (role === "Intern") {
+                employee = new intern(name, id, email, school);
+                console.log(employee);
+            }
+            teamArray.push(employee);
+            if (confirmAddTeamMember) {
+                return addTeamMember(teamArray);
+            } else {
+                return teamArray;
+            }
+        })
+    };
+    
+
+
 // function to write index.html file
     function writeToFile(fileName, data) {
         fs.writeFile(fileName, data, function (err) {
@@ -62,7 +98,7 @@ const fs = require("fs");
 
     // function to initialize program
     function init() {
-        promptUser().then(function (data) {
+        promptManager().then(function (data) {
             // console.log(data);
             const html = generatePage(data);
             writeToFile("index.html", html);
