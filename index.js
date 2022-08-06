@@ -1,7 +1,15 @@
-// packages needed for this application
+// generate HTML page
+const generatePage = require('./utils/generatePage.js');
+
+// generate card for each team member
+const manager = require('./lib/manager.js');
+const engineer = require('./lib/engineer.js');
+const intern = require('./lib/intern.js');
+
+// fs and inquirer are required to run this program
 const inquirer = require("inquirer"); 
 const fs = require("fs");
-const generatePage = require('./utils/generatePage.js');
+
 
 // WHEN I am prompted for my team members and their information
 
