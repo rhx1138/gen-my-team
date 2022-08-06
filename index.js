@@ -130,15 +130,6 @@ const teamArray = [];
         });
     }
 
-    // function to initialize program
-    // function init() {
-    //     promptManager().then(function (data) {
-    //         const html = generatePage(data);
-    //         writeToFile("index.html", html);
-    //     });
-    // }
-    // init();
-
     promptManager()
     .then(addTeamMember)
     .then(teamArray => {

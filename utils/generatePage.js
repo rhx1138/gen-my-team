@@ -83,7 +83,6 @@ generatePage = data => {
     }
 
     const employeeCards = pageArray.join("");
-
     const generateTeam = generateTeamPage(employeeCards);
     return generateTeam;
 }
