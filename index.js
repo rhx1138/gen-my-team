@@ -60,12 +60,42 @@ const teamArray = [];
                 name: "role",
                 message: "What is the type of team member you would like to add?",
                 choices: ["Engineer", "Intern"]
-            } 
-
+            },
+            {
+                type: "input",
+                name: "name",
+                message: "What is your name?"
+            },
+            {
+                type: "input",
+                name: "id",
+                message: "What is your ID number?"
+            },
+            {
+                type: "input",
+                name: "email",
+                message: "What is your email?"
+            },
+            {
+                type: "input",
+                name: "github",
+                message: "What is your GitHub username?",
+                when: (input) => input.role === "Engineer"
+            },
+            {
+                type: "input",
+                name: "school",
+                message: "What is your school name?",
+                when: (input) => input.role === "Intern"
+            },
+            {
+                type: "confirm",
+                name: "confirmAddEmployee",
+                message: "Would you like to add another employee?"
+            }
         ])
-      
         .then(employeeData => {
-            let {name, id, email, officeNumber} = employeeData;
+            let {name, id, email, role, github, school, confirmAddTeamMember} = employeeData;
             let employee;
 
             if (role === "Engineer") {
@@ -85,7 +115,6 @@ const teamArray = [];
     };
     
 
-
 // function to write index.html file
     function writeToFile(fileName, data) {
         fs.writeFile(fileName, data, function (err) {
@@ -97,14 +126,26 @@ const teamArray = [];
     }
 
     // function to initialize program
-    function init() {
-        promptManager().then(function (data) {
-            // console.log(data);
-            const html = generatePage(data);
-            writeToFile("index.html", html);
-        });
-    }
-    init();
+    // function init() {
+    //     promptManager().then(function (data) {
+    //         const html = generatePage(data);
+    //         writeToFile("index.html", html);
+    //     });
+    // }
+    // init();
+
+    promptManager()
+    .then(addTeamMember)
+    .then(teamArray => {
+        return generatePage(teamArray);
+    })
+    .then(html => {
+        writeToFile("index.html", html);
+    })
+    .catch(err => {
+        console.log(err);
+    });
+    // console.log(teamArray);
 
 
 
