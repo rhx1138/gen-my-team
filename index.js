@@ -23,12 +23,12 @@ const teamArray = [];
             {
                 type: "input",
                 name: "id",
-                message: "What is your manager's ID number?"
+                message: "What is your ID number?"
             },
             {
                 type: "input",
                 name: "email",
-                message: "What is your manager's email?"
+                message: "What is your email?"
             },
             {
                 type: "input",
@@ -129,59 +129,6 @@ const teamArray = [];
             console.log("Success!");
         });
     }
-    ).then(() => { 
-        promptUser();
-    }
-    ).catch((err) => {
-        console.log(err);
-    }
-    );
-} 
-
-
-    
-
-
-
-// function to write index.html file
- function writeToFile (data) {
-    fs.writeFile("index.html", data, function (err) {
-        if (err) {
-            return console.log(err);
-
-} else {
-    console.log("Success!");
-}
-    });
-}
-// function to build html page
-function buildPage (data) {
-    let html = "";
-    for (let i = 0; i < data.length; i++) {
-        const employee = data[i];
-        const role = employee.role;
-        if (role === "Manager") {
-            html += htmlSections.managerSection(employee);
-        } else if (role === "Engineer") {
-            html += htmlSections.engineerSection(employee);
-        } else if (role === "Intern") {
-            html += htmlSections.internSection(employee);
-        }
-    }
-    return html;
-}
-
-
-
-    // function to initialize program
-    // function init() {
-    //     promptUser().then(function (data) {
-    //         // console.log(data);
-    //         const html = generatePage(data);
-    //         writeToFile("index.html", html);
-    //     });
-    // }
-    // init();
 
     // function to initialize program
     // function init() {
@@ -204,8 +151,6 @@ function buildPage (data) {
         console.log(err);
     });
     // console.log(teamArray);
-
-
 
 
 
