@@ -1,22 +1,6 @@
 // function that generates new badges for index.html file
-function generateBadges(data) {
-    return `<div class="col-md-3">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">${data.name}</h5>
-                <p class="card-text">${data.title}</p>
-                <p class="card-text">${data.id}</p>
-                <p class="card-text">${data.email}</p>
-                <p class="card-text">${data.github}</p>
-                        
-            </div>
-        </div>
-    </div>`;
-}
-
-function generatePage(data) {
-    return `
-    <!DOCTYPE html>
+function generatePage(data) { 
+    let html = ` <!DOCTYPE html>
     <html lang="en">
     
     <head>
@@ -35,41 +19,83 @@ function generatePage(data) {
             <h1 class="text-center" style="color: white ;">Gen My Team</h1>
         </div>
     </div>
-    <div class="row">
-    <div class="col-md-4">
-                <div class="thumbnail">
-                    <img src="https://avatars3.githubusercontent.com/u/14098981?s=460&v=4" width="50%" alt="...">
-                    <div class="caption">
-                        <!-- add blue background color to the name and job title -->
-                        <h3>${data.name}</h3>
-                        <p>
-                            <strong>Job Title:  ${data.title}</strong>
-                            <br>
-                            <strong>ID: ${data.id}</strong>
-                            <br>
-
-                            <em>
-                                <a href="https://github.com/${data.github}">
-                                ${data.name}'s GitHub Profile
-                                </a>
-                            </em>
-                        </p>
-                        <p>
-                            <strong>Email:  ${data.email}</strong>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
 
     </body>
-    </html>
-    ![alt text](${data.image})
+    </html>`;
+    data.forEach(function(employee) {
+        html += generateBadges(employee);
+    }
+    );
+    return html;
+}
+
+// create manager card for index.html file
+const generateManagerCard = (manager) => {
+    return `
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">${manager.getName()}</h2>
+            <h3 class="card-subtitle">${manager.getId()}</h3>
+        </div>
+        <div class="card-body">
+            <p class="card-text">${manager.getEmail()}</p>
+            <p class="card-text">${manager.getOfficeNumber()}</p>
+        </div>
+    </div>
     `;
 }
+
+// create engineer card for index.html file
+
+const generateEngineerCard = (engineer) => {
+    return `
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">${engineer.getName()}</h2>
+            <h3 class="card-subtitle">${engineer.getId()}</h3>
+        </div>
+        <div class="card-body">
+            <p class="card-text">${engineer.getEmail()}</p>
+            <p class="card-text">${engineer.getGithub()}</p>
+        </div>
+    </div>
+    `;
+}
+
+// create intern card for index.html file
+const generateInternCard = (intern) => {
+    return `
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">${intern.getName()}</h2>
+            <h3 class="card-subtitle">${intern.getId()}</h3>
+        </div>
+        <div class="card-body">
+            <p class="card-text">${intern.getEmail()}</p>
+            <p class="card-text">${intern.getSchool()}</p>
+        </div>
+    </div>
+    `;
+}
+
+// push data from index to html file
+generatePage = data => {
+    pageArray = [];
+
+    data.forEach(function(employee) {
+        if (employee.getRole() === "Manager") {
+            pageArray.push(generateManagerCard(employee));
+        } else if (employee.getRole() === "Engineer") {
+            pageArray.push(generateEngineerCard(employee));
+        } else if (employee.getRole() === "Intern") {
+            pageArray.push(generateInternCard(employee));
+        }
+    }
+    );
+    return pageArray.join("");
+}
+
+
+
 
 module.exports = generatePage;
