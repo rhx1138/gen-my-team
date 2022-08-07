@@ -8,9 +8,9 @@ A Node.js command-line application that takes in information about employees on 
  
 # Link to Walkthrough Video / Website
 
-[App Website](https://gen-my-team.netlify.app/)
+[App Website Example Output](https://gen-my-team.netlify.app/)
 
-https://drive.google.com/file/title
+<!-- https://drive.google.com/file/title -->
 
 # Table of Contents
 
