@@ -131,13 +131,16 @@ const generateTeamPage = function (employeeCards) {
     <title>Gen My Team</title>
     <!-- bootstrap cdn -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 </head>
 <body>
 <!-- title header is centered with red background color at the top -->
 <div class="row" style="background-color: rgb(230, 65, 65) ;">
     <div class="col-md-12">
-        <h1 class="text-center" style="color: white ;">Gen My Team</h1>
+        <h1 class="text-center" style="color: white ; font-family: 'Anton', sans-serif;">Gen My Team</h1>
     </div>
 </div>
 <!--team cards-->

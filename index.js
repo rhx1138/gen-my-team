@@ -100,7 +100,7 @@ const teamArray = [];
             }
         ])
         .then(employeeData => {
-            let {name, id, email, role, github, school, confirmAddTeamMember} = employeeData;
+            let {name, id, email, role, github, school, confirmAddEmployee} = employeeData;
             let employee;
 
             if (role === "Engineer") {
@@ -111,7 +111,7 @@ const teamArray = [];
                 console.log(employee);
             }
             teamArray.push(employee);
-            if (confirmAddTeamMember) {
+            if (confirmAddEmployee) {
                 return addTeamMember(teamArray);
             } else {
                 return teamArray;
