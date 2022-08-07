@@ -8,55 +8,86 @@ function generatePage(data) {
 // create manager card for index.html file
 const generateManagerCard = (manager) => {
     return `
-    <div class="card">
-        <div class="card-header">
-            <h2 class="card-title">${manager.getName()}</h2>
-            <h3 class="card-subtitle">${manager.getId()}</h3>
-        </div>
-        <div class="card-body">
-            <p class="card-text">${manager.getEmail()}</p>
-            <p class="card-text">${manager.getOfficeNumber()}</p>
-        </div>
-    </div>
+    
+    
+    <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="/assets/images/manager.png" width="50%" alt="...">
+                    <div class="caption">
+                        <!-- add blue background color to the name and job title -->
+                        <h3 style="background-color: rgb(183, 235, 252);"><strong>${manager.getName()}</strong></h3>
+                        <p>
+                            <strong>Job Title: MANAGER</strong>
+                            <br>
+                            <strong>ID: ${manager.getId()}</strong>
+                            <br>
+                            <strong>Email:  ${manager.getEmail()}</strong>
+                            <br>
+                            <strong> Office Number: ${manager.getOfficeNumber()}</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        
     `;
 }
 
 // create engineer card for index.html file
-
 const generateEngineerCard = (engineer) => {
     return `
-    <div class="card">
-        <div class="card-header">
-            <h2 class="card-title">${engineer.getName()}</h2>
-            <h3 class="card-subtitle">${engineer.getId()}</h3>
-        </div>
-        <div class="card-body">
-            <p class="card-text">${engineer.getEmail()}</p>
-            <p class="card-text">${engineer.getGithub()}</p>
-        </div>
-    </div>
+    
+    <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="/assets/images/engineer.png" width="50%" alt="...">
+                    <div class="caption">
+                        <!-- add blue background color to the name and job title -->
+                        <h3 style="background-color: rgb(250, 250, 148);"><strong>${engineer.getName()}</strong></h3>
+                        <p>
+                            <strong>Job Title: ENGINEER</strong>
+                            <br>
+                            <strong>ID: ${engineer.getId()}</strong>
+                            <br>
+                            <strong>Email:  ${engineer.getEmail()}</strong>
+                            <br>
+                            <strong><a href="https://github.com/${engineer.getGithub()}">
+                            ${engineer.getName()}'s GitHub Profile
+                            </a></strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        
     `;
 }
 
 // create intern card for index.html file
 const generateInternCard = (intern) => {
     return `
-    <div class="card">
-        <div class="card-header">
-            <h2 class="card-title">${intern.getName()}</h2>
-            <h3 class="card-subtitle">${intern.getId()}</h3>
-        </div>
-        <div class="card-body">
-            <p class="card-text">${intern.getEmail()}</p>
-            <p class="card-text">${intern.getSchool()}</p>
-        </div>
-    </div>
+  
+    
+    <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="/assets/images/intern.png" width="50%" alt="...">
+                    <div class="caption">
+                        <!-- add blue background color to the name and job title -->
+                        <h3 style="background-color: rgb(163, 235, 231);"><strong>${intern.getName()}</strong></h3>
+                        <p>
+                            <strong>Job Title: INTERN</strong>
+                            <br>
+                            <strong>ID: ${intern.getId()}</strong>
+                            <br>
+                            <strong>Email:  ${intern.getEmail()}</strong>
+                            <br>
+                            <strong>School: ${intern.getSchool()}</strong>
+                        </p>
+                           
+                    </div>
+                </div>
+            </div>     
     `;
 }
 
 // push data from index to html file
-// not recognizing .getRole()
-
 generatePage = data => {
     pageArray = [];
 
@@ -109,19 +140,10 @@ const generateTeamPage = function (employeeCards) {
         <h1 class="text-center" style="color: white ;">Gen My Team</h1>
     </div>
 </div>
+<!--team cards-->
 <div class="row">
-<div class="col-md-4">
-            <div class="thumbnail">
-                <img src="https://avatars3.githubusercontent.com/u/14098981?s=460&v=4" width="50%" alt="...">
-                <!--team cards-->
-                ${employeeCards}
-            </div>
-        </div>
-    </div>
+${employeeCards}
 </div>
-
-
-
 
 </body>
 </html>`
