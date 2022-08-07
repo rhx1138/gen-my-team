@@ -25,9 +25,18 @@ https://drive.google.com/file/title
   * [License](#license)
 
 
-# Instillation
+# Installation
 
-To run the application, the user must include Inquirer 8.2.4, a JavaScript package on NPM
+To run the application, the user must include Inquirer 8.2.4, a JavaScript package on NPM.  
+Within your editor, you will see the screenshot instance as your current HTML.    
+
+1. To create your own team, open your terminal within your editor and enter 'node index.js'.    
+
+2. Once you have done this, it will then begin the question prompts to enter your team's details.
+
+3. After you have added your team members, a 'success' message in the console will print.  
+
+4. Your HTML file should reflect your team details that you entered.
  
 # Usage
 
@@ -41,7 +50,7 @@ To run the application, the user must include Inquirer 8.2.4, a JavaScript packa
 
 This application is open for use to the general public
 
-# Screenshots
+# Screenshot
 
 ![screenshot one](/assets/images/team_screen1.png "Page Output") 
  
