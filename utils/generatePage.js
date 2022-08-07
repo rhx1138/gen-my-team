@@ -8,8 +8,6 @@ function generatePage(data) {
 // create manager card for index.html file
 const generateManagerCard = (manager) => {
     return `
-    
-    
     <div class="col-md-4">
                 <div class="thumbnail">
                     <img src="/assets/images/manager.png" width="50%" alt="...">
@@ -35,7 +33,6 @@ const generateManagerCard = (manager) => {
 // create engineer card for index.html file
 const generateEngineerCard = (engineer) => {
     return `
-    
     <div class="col-md-4">
                 <div class="thumbnail">
                     <img src="/assets/images/engineer.png" width="50%" alt="...">
@@ -56,15 +53,12 @@ const generateEngineerCard = (engineer) => {
                     </div>
                 </div>
             </div>
-        
     `;
 }
 
 // create intern card for index.html file
 const generateInternCard = (intern) => {
     return `
-  
-    
     <div class="col-md-4">
                 <div class="thumbnail">
                     <img src="/assets/images/intern.png" width="50%" alt="...">
@@ -110,7 +104,6 @@ generatePage = data => {
             pageArray.push(internCard);
         }
 
-
     }
 
     const employeeCards = pageArray.join("");
@@ -135,6 +128,7 @@ const generateTeamPage = function (employeeCards) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
 <!-- title header is centered with red background color at the top -->
@@ -144,7 +138,7 @@ const generateTeamPage = function (employeeCards) {
     </div>
 </div>
 <!--team cards-->
-<div class="row">
+<div class="row team-cards">
 ${employeeCards}
 </div>
 

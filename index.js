@@ -12,7 +12,6 @@ const fs = require("fs");
 
 const teamArray = [];
 
-
     function promptManager() {
         return inquirer.prompt([
             {
