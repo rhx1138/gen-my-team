@@ -27,8 +27,9 @@ A Node.js command-line application that takes in information about employees on 
 
 # Installation
 
-To run the application, the user must include Inquirer 8.2.4, a JavaScript package on NPM.  
-Within your editor, you will see the screenshot instance as your current HTML.    
+To run the application, the user must include Inquirer 8.2.4, a JavaScript package on NPM. You need to have installed NPM already to run this program. Just in case you need to check, type npm --version in your terminal. If you get back Command 'npm' not found, you will need to install.  
+
+Within your editor, you will see the screenshot (see image below) instance as your current HTML.    
 
 1. To create your own team, open your terminal within your editor and enter 'node index.js'.    
 
