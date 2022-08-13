@@ -10,7 +10,7 @@ A Node.js command-line application that takes in information about employees on 
 
 [App Website Example Output](https://gen-my-team.netlify.app/)
 
-<!-- https://drive.google.com/file/title -->
+https://drive.google.com/file/d/1WYbSd7XT5qF5FrcbyHLBeadu29FGvs3_/view?usp=sharing
 
 # Table of Contents
 
