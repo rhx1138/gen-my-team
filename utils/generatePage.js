@@ -19,7 +19,7 @@ const generateManagerCard = (manager) => {
                             <br>
                             <strong>ID: ${manager.getId()}</strong>
                             <br>
-                            <strong>Email:  ${manager.getEmail()}</strong>
+                            <strong>Email: <a href = "mailto: ${manager.getEmail()}">${manager.getEmail()}</a></strong>
                             <br>
                             <strong> Office Number: ${manager.getOfficeNumber()}</strong>
                         </p>
@@ -70,7 +70,7 @@ const generateInternCard = (intern) => {
                             <br>
                             <strong>ID: ${intern.getId()}</strong>
                             <br>
-                            <strong>Email:  ${intern.getEmail()}</strong>
+                            <strong>Email:<a href = "mailto: ${intern.getEmail()}">${intern.getEmail()}</a></strong>
                             <br>
                             <strong>School: ${intern.getSchool()}</strong>
                         </p>
