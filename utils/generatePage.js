@@ -44,7 +44,7 @@ const generateEngineerCard = (engineer) => {
                             <br>
                             <strong>ID: ${engineer.getId()}</strong>
                             <br>
-                            <strong>Email:  ${engineer.getEmail()}</strong>
+                            <strong>Email: <a href = "mailto: ${engineer.getEmail()}">${engineer.getEmail()}</a></strong>
                             <br>
                             <strong><a href="https://github.com/${engineer.getGithub()}">
                             ${engineer.getName()}'s GitHub Profile
