@@ -1,3 +1,5 @@
+// npm run test
+
 const { expect } = require("@jest/globals");
 const Employee = require("../lib/Employee");
 
